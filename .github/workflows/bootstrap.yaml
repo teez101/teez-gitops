@@ -5,7 +5,11 @@ on:
       subscription_id:
         type: string
         description: subscription id
-        default: ace306d4-b772-443e-a0e3-b9d589ab33d6
+        default: 'ace306d4-b772-443e-a0e3-b9d589ab33d6'
+      tenant_id:
+        type: string
+        description: 'Tenant Id'
+        default: '8d16a26d-6fc5-47cb-97f8-4d093334cfe1'
 env:
   AZ_USERNAME: 'taahirmoolla101@gmail.com'
 jobs:
@@ -18,6 +22,6 @@ jobs:
         name: Install kubectl
       - name: Az Login
         run: |
-          az login -u ${{ env.AZ_USERNAME }}  -p ${{ secrets.AZ_PASSWORD }}
+          az login --service-principal -u ${{ secrets.AZ_LOGIN_ID }} -p ${{ secrets.AZ_LOGIN_PASSWORD }} --tenant ${{ inputs.tenant_id }}
           az account set --subscription ${{ inputs.subscription_id }}
 
