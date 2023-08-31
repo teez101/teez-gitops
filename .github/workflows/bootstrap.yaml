@@ -3,15 +3,23 @@ name: bootstrap cluster
 on:
   workflow_dispatch:
     inputs:
-      name:
-        type: subscription_id
+      subscription_id:
+        type: string
         description: subscription id
         default: ace306d4-b772-443e-a0e3-b9d589ab33d6
-
+env:
+  AZ_USERNAME: 'taahirmoolla101@gmail.com'
 jobs:
   bootstrap-cluster:
     runs-on: ubuntu-latest
 
     steps:
-      name: Install Az Cli
-      uses: Azure/cli@v1
+      - uses: elstudio/action-install-azure-cli@v1
+        name: install azure cli
+      - uses: azure/setup-kubectl@v3
+        name: Install kubectl
+        run: |
+          az login -u ${{ env.AZ_USERNAME }}  -p ${{ secrets.AZ_PASSWORD }}
+          az account set --subscription ${{ inputs.subscription_id }}
+
+
