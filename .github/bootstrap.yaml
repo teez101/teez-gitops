@@ -1,0 +1,17 @@
+name: bootstrap cluster
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        type: subscription_id
+        description: subscription id
+        default: ace306d4-b772-443e-a0e3-b9d589ab33d6
+
+jobs:
+  bootstrap-cluster:
+    runs-on: ubuntu-latest
+
+    steps:
+      name: Install Az Cli
+      uses: Azure/cli@v1
