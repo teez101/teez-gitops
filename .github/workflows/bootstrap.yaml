@@ -15,6 +15,7 @@ env:
 jobs:
   bootstrap-cluster:
     runs-on: ['ubuntu-latest']
+    environment: 'teez'
     steps:
       - uses: elstudio/action-install-azure-cli@v1
         name: install azure cli
