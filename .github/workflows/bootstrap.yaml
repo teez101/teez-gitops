@@ -18,8 +18,8 @@ jobs:
         name: install azure cli
       - uses: azure/setup-kubectl@v3
         name: Install kubectl
-      - name: Az login
-        shell: bash
         run: |
           az login -u ${{ env.AZ_USERNAME }}  -p ${{ secrets.AZ_PASSWORD }}
           az account set --subscription ${{ inputs.subscription_id }}
+
+
