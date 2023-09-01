@@ -25,7 +25,6 @@ jobs:
         run: |
           az login --service-principal -u ${{ secrets.AZ_LOGIN_ID }} -p ${{ secrets.AZ_LOGIN_PASSWORD }} --tenant ${{ inputs.tenant_id }}
           az account set --subscription ${{ inputs.subscription_id }}
-            - name: Az Login
       - name: Az Cluster login
         run: |
           az account set --subscription ${{ inputs.subscription_id }}
